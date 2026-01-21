@@ -1,9 +1,6 @@
 pipeline {
-    agent { 
-        node {
-            label 'jenkins-agent-goes-here'
-            }
-      }
+    agent any
+
     stages {
         stage('Build') {
             steps {
@@ -13,14 +10,16 @@ pipeline {
                 '''
             }
         }
+
         stage('Test') {
             steps {
                 echo "Testing.."
                 sh '''
-                echo "doing test stuff..
+                echo "doing test stuff.."
                 '''
             }
         }
+
         stage('Deliver') {
             steps {
                 echo 'Deliver....'
