@@ -14,7 +14,10 @@ pipeline {
             steps {
                 sh '''
                 cd myapp
-                pip3 install -r requirements.txt
+                python3 -m venv venv
+                . venv/bin/activate
+                pip install --upgrade pip
+                pip install -r requirements.txt
                 '''
             }
         }
@@ -23,8 +26,9 @@ pipeline {
             steps {
                 sh '''
                 cd myapp
-                python3 hello.py
-                python3 hello.py --name=Brad
+                . venv/bin/activate
+                python hello.py
+                python hello.py --name=Brad
                 '''
             }
         }
